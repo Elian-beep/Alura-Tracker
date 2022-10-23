@@ -1,29 +1,20 @@
 <template>
   <div class="is-flex is-align-items-center is-justify-content-space-between">
     <CronometroForm :tempoEmSegundos="tempoEmSegundos" />
-    <button class="button" @click="iniciar" :disabled="cronometroRodando">
-      <span class="icon">
-        <i class="fas fa-play"></i>
-      </span>
-      <span>play</span>
-    </button>
-    <button class="button" @click="finalizar" :disabled="!cronometroRodando">
-      <span class="icon">
-        <i class="fas fa-stop"></i>
-      </span>
-      <span>stop</span>
-    </button>
+    <BotaoForm @clicado="iniciar" icone="fas fa-play" texto="play" :desabilitado="cronometroRodando" />
+    <BotaoForm @clicado="finalizar" icone="fas fa-stop" texto="stop" :desabilitado="!cronometroRodando" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import CronometroForm from './CronometroForm.vue';
+import BotaoForm from './BotaoForm.vue';
 
 export default defineComponent({
   name: "TemporizadorForm",
   emits: ['aoTemporizadorFinalizado'],                    //Em determinado momento, vai emitir algo
-  components: { CronometroForm },
+  components: { CronometroForm, BotaoForm },
   data(){                       //Vai criar e retornar os dados mutados que serão usados no componente
     return {
       tempoEmSegundos: 0,
