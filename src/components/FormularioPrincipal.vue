@@ -18,15 +18,15 @@
           class="is-flex is-align-items-center is-justify-content-space-between"
         >
           <section>
-            <strong>00:00</strong>
+            <strong>{{ tempoDecorrido }}</strong>
           </section>
-          <button class="button">
+          <button class="button" @click="iniciar">
             <span class="icon">
               <i class="fas fa-play"></i>
             </span>
             <span>play</span>
           </button>
-          <button class="button">
+          <button class="button" @click="finalizar">
             <span class="icon">
               <i class="fas fa-stop"></i>
             </span>
@@ -43,6 +43,31 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "FormularioPrincipal",
+  data(){                       //Vai criar e retornar os dados mutados que serão usados no componente
+    return {
+      tempoEmSegundos: 0
+    }
+  },
+  computed: {                   //Vai monitorar e computar uma informaçõa caso ela seja alterada
+    tempoDecorrido() : string { //Retorna uma string
+      return new Date(this.tempoEmSegundos * 1000).toISOString().substr(11, 8);
+    }
+  },
+  methods: {                   //Funções que serão utilizadas dentro do componente
+    iniciar() {
+      // começar a contagem
+      // 1s = 1000ms
+      setInterval(() => {
+        this.tempoEmSegundos++
+        
+      }, 1000);
+      console.log('iniciando');
+      
+    },
+    finalizar() {
+      console.log('finalizando');
+    }
+  }
 });
 </script>
 
