@@ -9,30 +9,12 @@
         <input
           type="text"
           class="input"
-          placeholder="Qual tarefa você deseja iniciar?"
+          placeholder="Qual tarefa deseja fazer hoje?"
         />
       </div>
 
       <div class="column">
-        <div
-          class="is-flex is-align-items-center is-justify-content-space-between"
-        >
-          <section>
-            <strong>{{ tempoDecorrido }}</strong>
-          </section>
-          <button class="button" @click="iniciar">
-            <span class="icon">
-              <i class="fas fa-play"></i>
-            </span>
-            <span>play</span>
-          </button>
-          <button class="button" @click="finalizar">
-            <span class="icon">
-              <i class="fas fa-stop"></i>
-            </span>
-            <span>stop</span>
-          </button>
-        </div>
+        <TemporizadorForm />
       </div>
     </div>
   </div>
@@ -40,34 +22,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import TemporizadorForm from './TemporizadorForm.vue';
 
 export default defineComponent({
   name: "FormularioPrincipal",
-  data(){                       //Vai criar e retornar os dados mutados que serão usados no componente
-    return {
-      tempoEmSegundos: 0
-    }
-  },
-  computed: {                   //Vai monitorar e computar uma informaçõa caso ela seja alterada
-    tempoDecorrido() : string { //Retorna uma string
-      return new Date(this.tempoEmSegundos * 1000).toISOString().substr(11, 8);
-    }
-  },
-  methods: {                   //Funções que serão utilizadas dentro do componente
-    iniciar() {
-      // começar a contagem
-      // 1s = 1000ms
-      setInterval(() => {
-        this.tempoEmSegundos++
-        
-      }, 1000);
-      console.log('iniciando');
-      
-    },
-    finalizar() {
-      console.log('finalizando');
-    }
-  }
+  components: { TemporizadorForm },
 });
 </script>
 
