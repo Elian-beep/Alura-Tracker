@@ -22,6 +22,7 @@ import CronometroForm from './CronometroForm.vue';
 
 export default defineComponent({
   name: "TemporizadorForm",
+  emits: ['aoTemporizadorFinalizado'],                    //Em determinado momento, vai emitir algo
   components: { CronometroForm },
   data(){                       //Vai criar e retornar os dados mutados que serão usados no componente
     return {
@@ -45,6 +46,8 @@ export default defineComponent({
     finalizar() {
         this.cronometroRodando = false;
         clearInterval(this.cronometro);
+        this.$emit('aoTemporizadorFinalizado', this.tempoEmSegundos); //Vai emitir o tempo em segundos ao finalizar
+        this.tempoEmSegundos = 0;
     }
   }
 });
