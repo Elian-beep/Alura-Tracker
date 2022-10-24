@@ -1,24 +1,14 @@
 # alura-tracker
 
-## Project setup
-```
-npm install
-```
+Cronometro com descrição de task realizada
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | **Alura Tracker**
+| :label: Tecnologias | VueJS, html, CSS, Bulma
+| :rocket: URL         | https://alura-tracker-elian-beep.vercel.app
+| :fire: Desafio     | Formação Vue3 Alura
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Detalhes do projeto
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Aplicação desenvolvida em Vue durante a Formação Vue3 com a Alura que realiza um temporizador de duração de tarefas.
